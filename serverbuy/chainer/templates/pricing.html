@@ -1,0 +1,60 @@
+{% extends 'layout/base.html'%}
+{% block content%} {% load static %}
+<div id="pricing" class="pricing-tables">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading">
+            <h4>We Have The Best Pre-Order <em>Prices</em> You Can Get</h4>
+            <img src="assets/images/heading-line-dec.png" alt="">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
+          </div>
+        </div>
+{%if build_packets%}
+{%for item in build_packets%}
+<div class="col-lg-4">
+  <a href="{% url 'payment' item.id %}">
+  <div class="pricing-item-regular">
+    <span class="price">${{item.price}}</span>
+    <h4>{{item.name}}</h4>
+    <div class="icon">
+      <img src="{{item.image.url}} " alt="">
+    </div>
+    <ul>
+      <li>{{item.description}}</li>
+      <li>{{item.storage}} TB Storage</li>
+      <li class="{{item.get_lifetimesupport}}">Life-time Support</li>
+      <li class="{{item.get_premiumaddons}}">Premium Add-Ons</li>
+      <li class="{{item.get_fastestnetwork}}">Fastest Network</li>
+      <li class="{{item.get_moreoptions}}">More Options</li>
+    </ul>
+    <div class="border-button">
+      <a href="#">Purchase This Plan Now</a>
+    </div>
+  </div>
+  </a>
+</div>
+{%endfor%}
+{% endif %}
+      </div>
+    </div>
+  </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content%}
